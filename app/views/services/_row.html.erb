@@ -1,6 +1,6 @@
 <!-- FILAS DE SERVICIOS  -->
 <tr>
-  <td><%= service.id %></td>
+  <td class="text-center"><%= service.id %></td>
   <td><%= service.origin %></td>
   <td><%= service.destination %></td>
   <td class="text-center">
@@ -9,6 +9,6 @@
     <%= l(service.date, format: "%y") %>
   </td>
   <td class="text-center">
-    <%= l(service.time, format: "%H:%M") %>
+    <%= l(service.time, format: "%I:%M %p") %>
   </td>
 </tr>

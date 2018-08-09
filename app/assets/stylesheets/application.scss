@@ -1,2 +1,11 @@
 @import "bootstrap";
 @import "services";
+
+body{
+  background: #f5f5f2;
+}
+
+// titulos
+.titles{
+  text-shadow: -1px -1px 1px rgba(0,0,0,0.3);
+}

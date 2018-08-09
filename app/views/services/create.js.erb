@@ -1,0 +1,8 @@
+<% if @service.errors.empty? %>
+  $('table tbody').append(' <%= j render "row", service: @service %>');
+  $('.alert-success').html("El servicio se ha solicitado con éxito").show();
+  $('#service-modal').modal('hide');
+<% else %>
+  // muestra el primer error
+  alert('<%= @service.errors.full_messages[0] %>');
+<% end %>

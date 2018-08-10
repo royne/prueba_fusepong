@@ -11,4 +11,8 @@
   <td class="text-center">
     <%= l(service.time, format: "%I:%M %p") %>
   </td>
+  <% if current_user.has_role? :admin %>
+    <td><%= service.user.name %></td>
+    <td><%= service.user_id %></td>    
+  <% end %>
 </tr>

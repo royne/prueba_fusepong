@@ -19,6 +19,10 @@
             <th>Destino</th>
             <th class="text-center">Fecha</th>
             <th class="text-center">Hora</th>
+            <% if current_user.has_role? :admin %>
+              <th>Cliente</th>
+              <th>Estado</th>
+            <% end %>
           </tr>
         </thead>
         <% @services.each do |service| %>

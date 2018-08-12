@@ -1,0 +1,27 @@
+<div class="container margin">
+  <div class="row justify-content-center">
+    <div class="col-sm-5">
+      <h2 class="titles">Mensajeros</h2>
+    </div>
+    <div class="col-sm-5 text-right"></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-10 margin">
+      <table class="table table-hover table-sm">
+        <thead class="thead-light">
+          <tr class="titles">
+            <th class="text-center">Id</th>
+            <th>Nombre</th>
+            <th>Documento</th>
+          </tr>
+        </thead>
+        <% @messages.each do |message| %>
+        <tbody>
+          <%= render "messages/row", message: message %>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @services = Service.all
   end
@@ -8,7 +10,7 @@ class ServicesController < ApplicationController
   end
 
   def create
-    @service = Service.new(services_params)
+    @service = current_user.services.create(services_params)
     if @service.save
       redirect_to services_path, notice:"El servicio se ha solicitado con exito"
     else

@@ -9,6 +9,53 @@
   </head>
 
   <body>
+    <% if signed_in? %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="/" class="navbar-brand"><%= current_user.name.capitalize %></a>
+          <ul></ul>          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <% if current_user.has_role? :admin %>
+                <%= link_to "Crear Mensajero", new_message_path, remote: true, class:"btn btn-outline-danger btn-sm" %>
+              <% end %>
+            </ul>
+
+            <ul class="navbar-nav">
+              <% if current_user.has_role? :admin %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Mensajeros
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <% Message.all.each do |message| %>
+                      <%= link_to message.name, messages_path, class:"dropdown-item" %>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+              <li class="nav-item">
+                <% if signed_in? %>
+                  <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class:"nav-link" %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info"><%= flash[:notice] %></div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger"><%= flash[:alert] %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

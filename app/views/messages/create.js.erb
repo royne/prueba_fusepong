@@ -1,0 +1,8 @@
+<% if @message.errors.empty? %>
+  $('table tbody').append(' <%= j render "row", message: @message %>');
+  $('.alert-success').html("El mensajerose creo con éxito").show();
+  $('#message-modal').modal('hide');
+<% else %>
+  // muestra el primer error
+  alert('<%= @message.errors.full_messages[0] %>');
+<% end %>

@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     if current_user.has_role? :admin
       @messages = Message.all
     else
-      redirect_to root_path  
+      redirect_to root_path
     end
   end
 

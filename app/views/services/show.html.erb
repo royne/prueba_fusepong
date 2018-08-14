@@ -11,7 +11,7 @@
           <p><b>Destino:</b> <%= @service.destination %></p>
           <p><b>Fecha:</b> <%= l(@service.date, format:"%d %b %y") %></p>
           <p><b>Hora:</b> <%= l(@service.time, format: "%I:%M %p") %></p>
-          <%= link_to "Asignar Mensajero", new_asignation_path, remote: true, class:"btn btn-dark" %>
+          <%= link_to "Asignar Mensajero", new_asignation_path(service: params[:id]), remote: true, class:"btn btn-dark" %>
         </div>
       </div>
     </div>

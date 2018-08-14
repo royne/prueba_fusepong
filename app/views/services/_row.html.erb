@@ -3,16 +3,24 @@
   <td class="text-center"><%= service.id %></td>
   <td><%= service.origin %></td>
   <td><%= service.destination %></td>
-  <td class="text-center">
+  <td>
     <%= l(service.date, format: "%d") %>
     <%= l(service.date, format: "%b") %>
     <%= l(service.date, format: "%y") %>
   </td>
-  <td class="text-center">
+  <td>
     <%= l(service.time, format: "%I:%M %p") %>
   </td>
   <% if current_user.has_role? :admin %>
     <td><%= service.user.name %></td>
-    <td><%= service.user_id %></td>    
+    <td><%= service.user_id %></td>
+    <td>
+      <% @asignations.each do |asignation| %>
+        <% if asignation.service_id == service.id %>
+          <%= asignation.user_id %>
+        <% end %>
+      <% end %>
+    </td>
+    <td class="text-center"><a href="/services/<%= service.id %>"><i class="fas fa-child" style="font-size: 20px;"></i></a></td>
   <% end %>
 </tr>

@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.all
+    @asignations = Asignation.all
   end
 
   def new
@@ -17,6 +18,10 @@ class ServicesController < ApplicationController
       flash[:alert] = @service.errors.full_messages
       render :new
     end
+  end
+
+  def show
+    @service = Service.find(params[:id])
   end
 
   private

@@ -17,11 +17,13 @@
             <th class="text-center">Id</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th class="text-center">Fecha</th>
-            <th class="text-center">Hora</th>
+            <th>Fecha</th>
+            <th>Hora</th>
             <% if current_user.has_role? :admin %>
               <th>Cliente</th>
               <th>Estado</th>
+              <th>Mensajero</th>
+              <th class="text-center">Asignar</th>
             <% end %>
           </tr>
         </thead>

@@ -19,6 +19,10 @@ class ServicesController < ApplicationController
     end
   end
 
+  def show
+    @service = Service.find(params[:id])
+  end
+
   private
     def services_params
       params.require(:service).permit(:origin, :destination, :date, :time)

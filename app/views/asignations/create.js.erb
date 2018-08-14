@@ -1,0 +1,7 @@
+<% if @asignation.errors.empty? %>
+  $('.alert-success').html("El mensajero se ha asignado con éxito").show();
+  $('#asignation-modal').modal('hide');
+<% else %>
+  // muestra el primer error
+  alert('<%= @asignation.errors.full_messages[0] %>');
+<% end %>

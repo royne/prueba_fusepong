@@ -32,7 +32,11 @@
                     Mensajeros
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
+                    <% User.all.each do |message| %>
+                      <% if message.has_role? :message %>
+                        <%= link_to message.name, messages_path, class:"dropdown-item" %>
+                      <% end %>
+                    <% end %>
                   </div>
                 </li>
               <% end %>

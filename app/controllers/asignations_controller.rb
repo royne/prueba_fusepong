@@ -5,7 +5,7 @@ class AsignationsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
     asignation = Asignation.create(asignation_params)
 
     if asignation.save

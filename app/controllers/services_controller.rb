@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
 
   def index
     @services = Service.all
+    @asignations = Asignation.all
   end
 
   def new

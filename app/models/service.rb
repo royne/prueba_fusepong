@@ -3,5 +3,5 @@ class Service < ApplicationRecord
   resourcify
 
   belongs_to :user
-  belongs_to :asignation
+  belongs_to :asignation, optional: true
 end

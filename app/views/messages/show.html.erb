@@ -1,0 +1,44 @@
+<% if current_user != nil and current_user.has_role? :message %>
+  <div class="container margin">
+    <div class="row justify-content-center">
+      <div class="col-sm-5">
+        <h2 class="titles">Servicios asignados a <%= current_user.name.capitalize %></h2>
+      </div>
+      <div class="col-sm-5 text-right"></div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-10 margin">
+        <table class="table table-hover table-sm">
+          <thead class="thead-light">
+            <tr class="titles">
+              <th class="text-center">Id</th>
+              <th>Origen</th>
+              <th>Destino</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Cliente</th>
+            </tr>
+          </thead>
+          <% @asignations.each do |asignation| %>
+            <tbody>
+              <% if asignation.user_id == current_user.id %>
+                <td class="text-center"><%= asignation.id %></td>
+                  <th><%= asignation.service.origin %></th>
+                  <th><%= asignation.service.destination %></th>
+                  <td>
+                    <%= l(asignation.service.date, format: "%d") %>
+                    <%= l(asignation.service.date, format: "%b") %>
+                    <%= l(asignation.service.date, format: "%y") %>
+                  </td>
+                  <td>
+                    <%= l(asignation.service.time, format: "%I:%M %p") %>
+                  </td>
+                  <th><%= asignation.service.user.name %></th>
+              <% end %>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

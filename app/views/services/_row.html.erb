@@ -17,7 +17,7 @@
     <td>
       <% @asignations.each do |asignation| %>
         <% if asignation.service_id == service.id %>
-          <%= asignation.user_id %>
+          <%= @user_message.find(asignation.user_id).name %>
         <% end %>
       <% end %>
     </td>

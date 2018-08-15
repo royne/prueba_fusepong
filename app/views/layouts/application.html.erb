@@ -13,7 +13,11 @@
     <% if signed_in? %>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a href="/" class="navbar-brand"><%= current_user.name.capitalize %></a>
+          <% if current_user.has_role? :message %>
+            <a href="/messages/<%= current_user.id %>" class="navbar-brand"><%= current_user.name.capitalize %></a>
+          <% else %>
+            <a href="/" class="navbar-brand"><%= current_user.name.capitalize %></a>
+          <% end %>
           <ul></ul>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

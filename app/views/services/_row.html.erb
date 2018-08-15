@@ -13,7 +13,17 @@
   </td>
   <% if current_user.has_role? :admin %>
     <td><%= service.user.name %></td>
-    <td><%= service.user_id %></td>
+    <td>
+      <% if service.state == 1 %>
+        Nuevo
+      <% elsif service.state == 2 %>
+        Asignado
+      <% elsif service.state == 3 %>
+        En proceso
+      <% elsif service.state == 4 %>
+        Terminado
+      <% end %>
+    </td>
     <td>
       <% @asignations.each do |asignation| %>
         <% if asignation.service_id == service.id %>

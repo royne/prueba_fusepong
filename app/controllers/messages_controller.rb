@@ -23,6 +23,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @asignations = Asignation.where(user_id: params[:id])
+  end
+
   private
     def messages_params
       params.require(:message).permit(:name, :document, :email, :password)

@@ -4,6 +4,7 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
     @asignations = Asignation.all
+    @user_message = User.all
   end
 
   def new

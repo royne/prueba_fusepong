@@ -1,9 +1,3 @@
-<% User.with_role(:message).each do |user|  %>
-  <% if user == current_user  %>
-    <%= user.name  %>
-  <% end %>
-<% end %>
-
 <% if current_user != nil and current_user.has_role? :message %>
   <div class="container margin">
     <div class="row justify-content-center">
@@ -29,17 +23,17 @@
             <tbody>
               <% if asignation.user_id == current_user.id %>
                 <td class="text-center"><%= asignation.id %></td>
-                    <th><%= asignation.service.origin %></th>
-                    <th><%= asignation.service.destination %></th>
-                    <td>
-                      <%= l(asignation.service.date, format: "%d") %>
-                      <%= l(asignation.service.date, format: "%b") %>
-                      <%= l(asignation.service.date, format: "%y") %>
-                    </td>
-                    <td>
-                      <%= l(asignation.service.time, format: "%I:%M %p") %>
-                    </td>
-                    <th><%= asignation.service.user.name %></th>
+                  <th><%= asignation.service.origin %></th>
+                  <th><%= asignation.service.destination %></th>
+                  <td>
+                    <%= l(asignation.service.date, format: "%d") %>
+                    <%= l(asignation.service.date, format: "%b") %>
+                    <%= l(asignation.service.date, format: "%y") %>
+                  </td>
+                  <td>
+                    <%= l(asignation.service.time, format: "%I:%M %p") %>
+                  </td>
+                  <th><%= asignation.service.user.name %></th>
               <% end %>
             </tbody>
           <% end %>

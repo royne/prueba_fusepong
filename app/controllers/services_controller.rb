@@ -9,7 +9,6 @@ class ServicesController < ApplicationController
     if current_user.has_role? :message
       redirect_to message_path(current_user.id)
     end
-    @state = {:Nuevo => 1, :Asignado => 2, :proceso => 3, :Terminado => 4}
   end
 
   def new

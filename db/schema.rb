@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180815225355) do
+ActiveRecord::Schema.define(version: 20180816071105) do
 
   create_table "asignations", force: :cascade do |t|
     t.integer "service_id"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180815225355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "state"
+    t.string "state"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 

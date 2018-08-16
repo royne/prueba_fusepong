@@ -11,11 +11,11 @@
   <td>
     <%= l(service.time, format: "%I:%M %p") %>
   </td>
+  <td>
+    <%= best_in_place_if (current_user.has_role? :admin), service, :state, :as => :select, :collection => { Nuevo: "Nuevo" , Asigando: "Asigando" } %>
+  </td>
   <% if current_user.has_role? :admin %>
     <td><%= service.user.name %></td>
-    <td>
-      <%= best_in_place_if (current_user.has_role? :admin), service, :state, :as => :select, :collection => { 1 => "Nuevo" , 2 => "Asigando" } %>
-    </td>
     <td>
       <% @asignations.each do |asignation| %>
         <% if asignation.service_id == service.id %>

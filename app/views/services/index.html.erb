@@ -19,11 +19,12 @@
             <th>Destino</th>
             <th>Fecha</th>
             <th>Hora</th>
+            <th>Estado</th>
             <% if current_user.has_role? :admin %>
               <th>Cliente</th>
-              <th>Estado</th>
               <th>Mensajero</th>
               <th class="text-center">Asignar</th>
+              <th>Cambiar Estado</th>
             <% end %>
           </tr>
         </thead>

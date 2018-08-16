@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :services, only: [:index, :new, :create, :show]
+  resources :services, only: [:index, :new, :create, :show, :edit, :update]
   resources :messages, only: [:index, :new, :create, :show]
   resources :asignations, only: [:index, :new, :create]
 end

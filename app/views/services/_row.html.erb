@@ -14,15 +14,7 @@
   <% if current_user.has_role? :admin %>
     <td><%= service.user.name %></td>
     <td>
-      <% if service.state == 1 %>
-        Nuevo
-      <% elsif service.state == 2 %>
-        Asignado
-      <% elsif service.state == 3 %>
-        En proceso
-      <% elsif service.state == 4 %>
-        Terminado
-      <% end %>
+      <%= best_in_place_if (current_user.has_role? :admin), service, :state, :as => :select, :collection => { 1 => "Nuevo" , 2 => "Asigando" } %>
     </td>
     <td>
       <% @asignations.each do |asignation| %>

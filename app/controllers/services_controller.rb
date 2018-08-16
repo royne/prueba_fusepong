@@ -31,6 +31,22 @@ class ServicesController < ApplicationController
     restriction_views
   end
 
+  def edit
+    @service = Service.find(params[:id])
+  end
+
+  def update
+    @service = Service.find(params[:id])
+    @service.update(services_params)
+
+    respond_to do |format|
+
+      format.html # show.html.erb
+      format.json { render json: @service }
+
+    end
+  end
+
   private
     def services_params
       params.require(:service).permit(:origin, :destination, :date, :time, :state)

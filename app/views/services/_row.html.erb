@@ -11,9 +11,9 @@
   <td>
     <%= l(service.time, format: "%I:%M %p") %>
   </td>
-  <td>
-    <%= best_in_place_if (current_user.has_role? :admin), service, :state, :as => :select, :collection => { Nuevo: "Nuevo" , Asigando: "Asigando" } %>
-  </td>
+  <th>
+    <%= service.state %>
+  </th>
   <% if current_user.has_role? :admin %>
     <td><%= service.user.name %></td>
     <td>
@@ -24,5 +24,6 @@
       <% end %>
     </td>
     <td class="text-center"><a href="/services/<%= service.id %>"><i class="fas fa-child" style="font-size: 20px;"></i></a></td>
+    <td><%= best_in_place_if (current_user.has_role? :admin), service, :state, :as => :select, :collection => { Asignado: "Asignado" } %></td>
   <% end %>
 </tr>

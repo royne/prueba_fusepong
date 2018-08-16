@@ -12,28 +12,34 @@
           <thead class="thead-light">
             <tr class="titles">
               <th class="text-center">Id</th>
+              <th>Estado</th>
               <th>Origen</th>
               <th>Destino</th>
               <th>Fecha</th>
               <th>Hora</th>
               <th>Cliente</th>
+              <th>Cambiar Estado</th>
             </tr>
           </thead>
           <% @asignations.each do |asignation| %>
             <tbody>
               <% if asignation.user_id == current_user.id %>
                 <td class="text-center"><%= asignation.id %></td>
-                  <th><%= asignation.service.origin %></th>
-                  <th><%= asignation.service.destination %></th>
-                  <td>
-                    <%= l(asignation.service.date, format: "%d") %>
-                    <%= l(asignation.service.date, format: "%b") %>
-                    <%= l(asignation.service.date, format: "%y") %>
-                  </td>
-                  <td>
-                    <%= l(asignation.service.time, format: "%I:%M %p") %>
-                  </td>
-                  <th><%= asignation.service.user.name %></th>
+                <th><%= asignation.service.state %></th>
+                <td><%= asignation.service.origin %></td>
+                <td><%= asignation.service.destination %></td>
+                <td>
+                  <%= l(asignation.service.date, format: "%d") %>
+                  <%= l(asignation.service.date, format: "%b") %>
+                  <%= l(asignation.service.date, format: "%y") %>
+                </td>
+                <td>
+                  <%= l(asignation.service.time, format: "%I:%M %p") %>
+                </td>
+                <td><%= asignation.service.user.name %></td>
+                <td>
+                  <%= best_in_place_if (current_user.has_role? :message), asignation.service, :state, :as => :select, :collection => { Proceso: "Proceso" , Terminado: "Terminado" } %>
+                </td>
               <% end %>
             </tbody>
           <% end %>
